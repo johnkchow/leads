@@ -1,0 +1,27 @@
+<h1>Listing Email History</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Lead</th>
+    <th>Template</th>
+    <th>Sent at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @email_histories.each do |email_history| %>
+  <tr>
+    <td><%= link_to email_history.lead.organization, email_history.lead %></td>
+    <td><%= link_to email_history.template.name, email_history.template %></td>
+    <td><%= email_history.sent_at %></td>
+    <td><%= link_to 'Show', email_history %></td>
+    <td><%= link_to 'Edit', edit_email_history_path(email_history) %></td>
+    <td><%= link_to 'Destroy', email_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Email history', new_email_history_path %>

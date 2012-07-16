@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Lead:</b>
+  <%= @email_history.lead.organization %>
+</p>
+
+<p>
+  <b>Sent at:</b>
+  <%= @email_history.sent_at %>
+</p>
+
+<p>
+  <b>Template:</b>
+  <%= @email_history.template.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_email_history_path(@email_history) %> |
+<%= link_to 'Back', email_histories_path %>

@@ -1,0 +1,53 @@
+<%= form_for(@email_history, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @email_history.errors.any? || @lead.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@email_history.errors.count + @lead.errors.count, "error") %> prohibited this email_history from being saved:</h2>
+
+      <ul>
+      <% (@email_history.errors.full_messages + @lead.errors.full_messages).each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= label :lead, :organization, :class => "control-label" %>
+    <div class="controls">
+      <%= text_field :lead, :organization %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= label :lead, :email, :class => "control-label" %>
+    <div class="controls">
+      <%= text_field :lead, :email %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= label :lead, :first_name, :class => "control-label" %>
+    <div class="controls">
+      <%= text_field :lead, :first_name %>
+    </div>
+  </div>
+  <!-- <div class="control-group">
+    <%= label :lead, :last_name, :class => "control-label"%>
+    <div class="controls">
+      <%= text_field :lead, :last_name %>
+    </div>
+  </div> -->
+  <div class="control-group">
+    <%= f.label :template_id, :class => "control-label" %>
+    <div class="controls">
+      <%= f.select :template_id, EmailTemplate.all.map {|t| [t.name, t.id]} %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('input[type=text]').first().focus();
+  });
+</script>
